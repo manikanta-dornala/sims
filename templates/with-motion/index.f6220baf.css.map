@@ -1,0 +1,1 @@
+{"mappings":"AAAA,UAMA,UAAA,CAHA,WAAA,CACA,QAAA,CACA,SAAA,CAHA,UAMA","sources":["templates/with-motion/style.css"],"sourcesContent":["body,\nhtml {\n    width: 100%;\n    height: 100%;\n    margin: 0;\n    padding: 0;\n    color: white;\n    /* background-color: black; */\n}\n"],"names":[],"version":3,"file":"index.f6220baf.css.map"}
