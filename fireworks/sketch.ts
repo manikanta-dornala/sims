@@ -32,7 +32,6 @@ const sketch = (p5: P5) => {
     p5.keyPressed = () => {
         if ((p5.key = ' ')) {
             params.isPaused = !params.isPaused;
-            console.log('sp');
         }
     };
 };

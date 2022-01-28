@@ -15,21 +15,18 @@ export default class Simulation {
 
     run() {
         this.drawGround();
-        if (Math.random() > 0.975) this.addNewParticle();
+        let skip = Math.random() > 0.9;
+        if (!params.isPaused && Math.random() > 0.97) this.addNewParticle();
         this.particles.forEach((particle: Particle) => {
             if (particle.isVisible) {
-                if (!params.isPaused) {
-                    // apply physics
+                if (!params.isPaused && !skip) {
                     let force = P5.Vector.mult(this.g, particle.mass);
                     particle.step(force);
-                    if (particle.velocity.mag() < 0.2) {
+                    if (particle.velocity.mag() < 0.1) {
                         this.explosionParticles.push(...particle.explode());
-                    }
-                    if (particle.velocity.mag() < 0.05) {
                         particle.isVisible = false;
                     }
                 }
-                // Draw things
                 particle.draw();
             }
         });
@@ -38,8 +35,7 @@ export default class Simulation {
         );
         this.explosionParticles.forEach((particle: Particle) => {
             if (particle.isVisible) {
-                if (!params.isPaused) {
-                    // apply physics
+                if (!params.isPaused && !skip) {
                     let force = P5.Vector.mult(this.g, particle.mass);
                     particle.step(force);
                     if (particle.position.y > this.groundHeight) {

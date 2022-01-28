@@ -1,5 +1,5 @@
 import P5, { Color } from 'p5';
-import Center from './center';
+import GuassianCenter from './center';
 var startTime, endTime;
 
 function start() {
@@ -9,23 +9,17 @@ function start() {
 function end() {
     endTime = new Date();
     var timeDiff = endTime - startTime; //in ms
-    // strip the ms
     timeDiff /= 1000;
-
-    // get seconds
-    var seconds = Math.round(timeDiff);
-    console.log(timeDiff + ' seconds');
+    // console.log(timeDiff + ' seconds');
 }
 export default class Simulation {
     p5: P5;
     img: P5.Image;
-    centers: Array<Center> = [];
+    centers: Array<GuassianCenter> = [];
     constructor(p5: P5) {
         this.p5 = p5;
         for (let i = 0; i < 5; i++) {
-            let particle = new Center(this.p5);
-            particle.amplitude = 5;
-            particle.sigma = p5.createVector(20, 20);
+            let particle = new GuassianCenter(this.p5);
             this.centers.push(particle);
         }
         this.img = this.p5.createImage(
@@ -36,35 +30,23 @@ export default class Simulation {
     }
     run() {
         this.centers.forEach((center) => {
-            if (this.p5.frameCount % 2 != 0) center.draw();
+            center.draw();
             center.step(this.p5.createVector(Math.random(), Math.random()));
         });
-        if (this.p5.frameCount % 2 != 0) this.updateBackground();
+        this.updateBackground();
     }
 
     updateBackground() {
-        // this.p5.createCanvas(this.p5.windowWidth, this.p5.windowHeight);
-        // this.p5.background(220, 255, 220);
-        // helper for writing color to array
-        function writeColor(
-            image: P5.Image,
-            position: { x; y },
-            color: { r; g; b; a }
-        ) {
-            let index = (position.x + position.y * image.width) * 4;
-            image.pixels[index] = color.r;
-            image.pixels[index + 1] = color.g;
-            image.pixels[index + 2] = color.b;
-            image.pixels[index + 3] = color.a;
-        }
-
         let x, y;
         start();
-        // fill with random colors
         for (y = 0; y < this.img.height; y++) {
             for (x = 0; x < this.img.width; x++) {
-                let c = this.p5.map(this.getColor({ x, y }), 0, 1, 0, 255);
-                writeColor(this.img, { x, y }, { r: 255, g: c, b: c, a: 255 });
+                let c = this.p5.map(this.getColor(x, y), 0, 1, 0, 255);
+                let index = (x + y * this.img.width) * 4;
+                this.img.pixels[index] = 255;
+                this.img.pixels[index + 1] = c;
+                this.img.pixels[index + 2] = c;
+                this.img.pixels[index + 3] = 255;
             }
         }
         end();
@@ -73,21 +55,16 @@ export default class Simulation {
         this.p5.image(this.img, 0, 0);
     }
 
-    getColor(position: { x; y }) {
-        function f(point: P5.Vector, guassian: Center) {
-            return (
-                guassian.amplitude *
-                Math.exp(
-                    (-0.5 * point.dist(guassian.position) ** 2) /
-                        guassian.sigma.x ** 2
-                )
-            );
-        }
-
+    getColor(x, y) {
         let result = 0;
-        let p = this.p5.createVector(position.x, position.y);
         this.centers.forEach((center) => {
-            result += f(p, center);
+            result +=
+                center.amplitude *
+                Math.exp(
+                    ((-0.5 * 1) / center.sigma.x ** 2) *
+                        ((x - center.position.x) ** 2 +
+                            (y - center.position.y) ** 2)
+                );
         });
         return result / this.centers.length;
     }

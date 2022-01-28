@@ -76,17 +76,17 @@ export default class Particle {
 
     explode(): Particle[] {
         let result = [];
-        for (let i = 0; i < 25; i++) {
+        for (let i = 0; i < 100; i++) {
             let particle = new Particle(this.p5);
             particle.position = this.position.copy();
-            particle.size = this.p5.map(Math.random(), 0, 1, 2, 4);
+            particle.size = this.p5.map(Math.random(), 0, 1, 1, 2);
             particle.mass = this.p5.map(Math.random(), 0, 1, 1, 2);
             particle.color = this.color;
-            particle.frameCount = this.p5.map(Math.random(), 0, 1, 230, 270);
+            particle.frameCount = this.p5.map(Math.random(), 0, 1, 250, 280);
             particle.velocity
                 .normalize()
-                .mult(this.p5.map(Math.random(), 0, 1, 0.5, 2));
-            // .add(particle.velocity);
+                .mult(this.p5.map(Math.random(), 0, 1, 0.1, 2))
+                .add(this.p5.createVector(0, -2));
             result.push(particle);
         }
         return result;

@@ -5,7 +5,7 @@ class Params {
     WallThickness = 0;
     WallBuffer = 150;
     InitialPopulation = 5;
-    MaxSpeed = 10;
+    MaxSpeed = 8;
     MinSpeed = 6;
     MaxForce = 0.2;
     g = 0.08;

@@ -1,6 +1,6 @@
 import P5 from 'p5';
 import params from './params';
-export default class Center {
+export default class GuassianCenter {
     amplitude: number;
     sigma: P5.Vector;
     mass: number;
@@ -28,6 +28,8 @@ export default class Center {
         );
         this.size = 5;
         this.mass = 1;
+        this.sigma = this.p5.createVector(this.p5.random(30, 50));
+        this.amplitude = this.p5.random(4,5)
     }
 
     draw() {
