@@ -10,7 +10,6 @@ function end() {
     endTime = new Date();
     var timeDiff = endTime - startTime; //in ms
     timeDiff /= 1000;
-    // console.log(timeDiff + ' seconds');
 }
 export default class Simulation {
     p5: P5;

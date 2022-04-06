@@ -58,7 +58,6 @@ export default class Particle {
     step(force: P5.Vector) {
         var acceleration = P5.Vector.mult(force, 1 / this.mass);
         this.velocity.add(acceleration);
-        // this.velocity.limit(params.MaxSpeed);
         this.position.add(this.velocity);
         this.warpWorld();
     }
@@ -76,10 +75,10 @@ export default class Particle {
 
     explode(): Particle[] {
         let result = [];
-        for (let i = 0; i < 100; i++) {
+        for (let i = 0; i < 300; i++) {
             let particle = new Particle(this.p5);
             particle.position = this.position.copy();
-            particle.size = this.p5.map(Math.random(), 0, 1, 1, 2);
+            particle.size = this.p5.map(Math.random(), 0, 1, 1, 1.5);
             particle.mass = this.p5.map(Math.random(), 0, 1, 1, 2);
             particle.color = this.color;
             particle.frameCount = this.p5.map(Math.random(), 0, 1, 250, 280);

@@ -16,7 +16,7 @@ export default class Simulation {
     run() {
         this.drawGround();
         let skip = Math.random() > 0.9;
-        if (!params.isPaused && Math.random() > 0.97) this.addNewParticle();
+        if (!params.isPaused && Math.random() > 0.98) this.addNewParticle();
         this.particles.forEach((particle: Particle) => {
             if (particle.isVisible) {
                 if (!params.isPaused && !skip) {
