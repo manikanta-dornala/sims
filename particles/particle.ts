@@ -24,7 +24,7 @@ export default class Particle {
             Math.random() * 255,
             Math.random() * 255
         );
-        this.size = 5;
+        this.size = 1;
         this.mass = 1;
     }
 
