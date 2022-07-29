@@ -29,7 +29,10 @@ export default class Simulation {
     drawLines(particle: Particle, particles: Array<Particle>) {
         particles.forEach((otherParticle) => {
             let d = P5.Vector.dist(otherParticle.position, particle.position);
-            if (d < params.lineMaxDist && this.p5.map(d, 0, params.lineMaxDist, 2, 0) > .75) {
+            if (
+                d < params.lineMaxDist &&
+                this.p5.map(d, 0, params.lineMaxDist, 2, 0) > 0.75
+            ) {
                 this.p5.stroke(
                     this.p5.color(
                         0,

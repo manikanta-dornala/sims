@@ -29,7 +29,7 @@ export default class GuassianCenter {
         this.size = 5;
         this.mass = 1;
         this.sigma = this.p5.createVector(this.p5.random(30, 50));
-        this.amplitude = this.p5.random(4,5)
+        this.amplitude = this.p5.random(4, 5);
     }
 
     draw() {
