@@ -16,7 +16,7 @@ const sketch = (p5: P5) => {
     };
 
     p5.windowResized = () => {
-        p5.resizeCanvas(p5.windowWidth * 0.7, p5.windowHeight * 0.9);
+        p5.resizeCanvas(p5.windowWidth * 0.9, p5.windowHeight * 0.9);
     };
 
     p5.draw = () => {
