@@ -96,36 +96,42 @@ class GameOfLife {
 
     simulateLife() {
         // Simulates the life according to Conway's Four rules
-        var nextGenCells = JSON.parse(JSON.stringify(this.cells));
+        const neighbors = [];
+        for (var i = 0; i < this.gridXSize; i++) {
+            neighbors.push([]);
+            for (var j = 0; j < this.gridYSize; j++) {
+                neighbors[i].push(this.retrieveLiveNeighbors(i, j));
+            }
+        }
         for (var i = 0; i < this.gridXSize; i++) {
             for (var j = 0; j < this.gridYSize; j++) {
-                var neighbors = this.retrieveLiveNeighbors(i, j);
+                const k = neighbors[i][j];
                 if (this.cells[i][j] == 1) {
-                    if (neighbors < 2) {
+                    if (k < 2) {
                         // Rule 1
                         // Any live cell with fewer than two live neighbors dies, as if by underpopulation.
-                        nextGenCells[i][j] = 0;
+                        this.cells[i][j] = 0;
                     }
-                    if (neighbors == 2 || neighbors == 3) {
+                    if (k == 2 || k == 3) {
                         // Rule 2
                         // Any live cell with two or three live neighbors lives on to the next generation.
-                        nextGenCells[i][j] = 1;
+                        this.cells[i][j] = 1;
                     }
-                    if (neighbors > 3) {
+                    if (k > 3) {
                         // Rule 3
                         // Any live cell with more than three live neighbors dies, as if by overpopulation.
-                        nextGenCells[i][j] = 0;
+                        this.cells[i][j] = 0;
                     }
                 } else {
-                    if (neighbors == 3) {
+                    if (k == 3) {
                         // Rule 4
                         // Any dead cell with exactly three live neighbors becomes a live cell, as if by reproduction.
-                        nextGenCells[i][j] = 1;
+                        this.cells[i][j] = 1;
                     }
                 }
             }
         }
-        this.cells = JSON.parse(JSON.stringify(nextGenCells));
+
     }
 }
 
