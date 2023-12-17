@@ -1,10 +1,11 @@
 import P5 from 'p5';
-
+import Params from './params';
 const sketch = (p5: P5) => {
     var is_canvas_infocus = false;
     let points = [];
-    let numSegments = 8;
     let rotationAngle = 0;
+    let params = new Params();
+    window.params = params;
     p5.setup = () => {
         var cnv = p5.createCanvas(p5.windowWidth * 0.9, p5.windowHeight * 0.9);
         cnv.mouseOver(() => {
@@ -15,7 +16,7 @@ const sketch = (p5: P5) => {
         });
         cnv.style('display', 'block');
         cnv.parent('sketch-holder');
-        points = generateSnowflake(numSegments, p5.height / 3);
+        points = generateSnowflake(Math.floor(params.Segments), p5.height / 3);
     };
 
     p5.windowResized = () => {
@@ -79,10 +80,13 @@ const sketch = (p5: P5) => {
         p5.background(255);
         p5.fill(255, 255, 255);
         rotationAngle += p5.PI / 10;
-        drawPoints(points, p5.width / 2, p5.height / 2);
         if (p5.frameCount % 90 == 0) {
-            points = generateSnowflake(numSegments, p5.height / 3);
+            points = generateSnowflake(
+                Math.floor(params.Segments),
+                p5.height / 3
+            );
         }
+        drawPoints(points, p5.width / 2, p5.height / 2);
     };
 };
 
