@@ -3,15 +3,20 @@ import Params from './params';
 window.params = new Params();
 function sketch(p5: P5) {
     p5.setup = () => {
-        p5.createCanvas(p5.windowHeight * 0.75, p5.windowHeight * 0.75);
+        p5.createCanvas(
+            Math.floor(p5.windowHeight * 0.75),
+            Math.floor(p5.windowHeight * 0.75)
+        );
         draw_set(p5);
     };
-
     p5.windowResized = () => {
-        p5.resizeCanvas(p5.windowHeight * 0.75, p5.windowHeight * 0.75);
+        p5.resizeCanvas(
+            Math.floor(p5.windowHeight * 0.75),
+            Math.floor(p5.windowHeight * 0.75)
+        );
     };
     p5.draw = () => {
-        draw_set(p5);
+        if (p5.frameCount % 10 == 0) draw_set(p5);
     };
 }
 
@@ -22,9 +27,9 @@ function draw_set(p5: P5) {
     p5.pixelDensity(1);
     p5.loadPixels();
 
-    for (let x = 0; x < p5.width; x++) {
+    for (let x = 0; x < p5.height; x++) {
         for (let y = 0; y < p5.height; y++) {
-            let a = p5.map(x, 0, p5.width, -2, 0.5);
+            let a = p5.map(x, 0, p5.height, -2, 0.5);
             let b = p5.map(y, 0, p5.height, -1.25, 1.25);
             const ca = a;
             const cb = b;
@@ -46,7 +51,7 @@ function draw_set(p5: P5) {
                 bright = 255;
             }
 
-            let pix = (x + y * p5.width) * 4;
+            let pix = (x + y * p5.height) * 4;
             p5.pixels[pix + 0] = 0;
             p5.pixels[pix + 1] = 0;
             p5.pixels[pix + 2] = 0;
