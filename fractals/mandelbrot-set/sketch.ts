@@ -2,23 +2,13 @@ import P5 from 'p5';
 import Params from './params';
 window.params = new Params();
 function sketch(p5: P5) {
-    var is_canvas_infocus = false;
-
     p5.setup = () => {
-        // cnv.mouseOver(() => {
-        //     is_canvas_infocus = true;
-        // });
-        // cnv.mouseOut(() => {
-        //     is_canvas_infocus = false;
-        // });
-        // cnv.style('display', 'block');
-        // cnv.parent('sketch-holder');
         p5.createCanvas(p5.windowHeight * 0.75, p5.windowHeight * 0.75);
         draw_set(p5);
     };
 
     p5.windowResized = () => {
-        p5.resizeCanvas(p5.windowWidth * 0.95, p5.windowHeight * 0.95);
+        p5.resizeCanvas(p5.windowHeight * 0.75, p5.windowHeight * 0.75);
     };
     p5.draw = () => {
         draw_set(p5);
@@ -34,7 +24,7 @@ function draw_set(p5: P5) {
 
     for (let x = 0; x < p5.width; x++) {
         for (let y = 0; y < p5.height; y++) {
-            let a = p5.map(x, 0, p5.height, -2, 0.5);
+            let a = p5.map(x, 0, p5.width, -2, 0.5);
             let b = p5.map(y, 0, p5.height, -1.25, 1.25);
             const ca = a;
             const cb = b;
