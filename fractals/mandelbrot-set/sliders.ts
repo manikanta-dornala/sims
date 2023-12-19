@@ -17,4 +17,4 @@ function addSlider(id, min, max, step = 0.01) {
         sliders.push(sliderElem);
     }
 }
-addSlider('MaxIterations', 0, 4 * params.MaxIterations);
+addSlider('MaxIterations', 20, 4 * params.MaxIterations);

@@ -1,4 +1,4 @@
 class Params {
-    MaxIterations = 20;
+    MaxIterations = 40;
 }
 export default Params;
