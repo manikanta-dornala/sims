@@ -6,17 +6,13 @@ function sketch(p5: P5) {
     let centerY = 0;
     let gridLength = 1.3;
     p5.setup = () => {
-        p5.createCanvas(
-            Math.floor(p5.windowHeight),
-            Math.floor(p5.windowHeight)
-        );
+        const width = Math.floor(Math.min(p5.windowHeight, p5.windowWidth));
+        p5.createCanvas(width, width);
         draw_set(p5, centerX, centerY);
     };
     p5.windowResized = () => {
-        p5.resizeCanvas(
-            Math.floor(p5.windowHeight),
-            Math.floor(p5.windowHeight)
-        );
+        const width = Math.floor(Math.min(p5.windowHeight, p5.windowWidth));
+        p5.resizeCanvas(width, width);
     };
     const drag = () => {
         if (p5.mouseIsPressed) {
@@ -75,19 +71,20 @@ function draw_set(p5: P5, centerX = -0.7, centerY = 0, gridLength = 1.3) {
     p5.pixelDensity(1);
     p5.colorMode(p5.HSB);
     p5.loadPixels();
-    for (let x = 0; x < p5.height; x++) {
-        for (let y = 0; y < p5.height; y++) {
+    const width = Math.min(p5.width, p5.height);
+    for (let x = 0; x < width; x++) {
+        for (let y = 0; y < width; y++) {
             let a = p5.map(
                 x,
                 0,
-                p5.height,
+                width,
                 centerX - gridLength,
                 centerX + gridLength
             );
             let b = p5.map(
                 y,
                 0,
-                p5.height,
+                width,
                 centerY - gridLength,
                 centerY + gridLength
             );
