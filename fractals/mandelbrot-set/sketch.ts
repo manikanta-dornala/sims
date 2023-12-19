@@ -42,12 +42,12 @@ function draw_set(p5: P5) {
                 a = aa + ca;
                 b = bb + cb;
 
-                if (p5.abs(a + b) > 20000) {
+                if (p5.abs(a + b) > 2000) {
                     break;
                 }
                 n++;
             }
-            let bright = p5.map(n, 0, window.params.MaxIterations, 0, 200);
+            let bright = p5.map(n, 0, window.params.MaxIterations, 0, 255);
             let saturation = p5.map(n, 0, window.params.MaxIterations, 50, 150);
             let lum = p5.map(n, 0, window.params.MaxIterations, 150, 255);
 
@@ -55,7 +55,7 @@ function draw_set(p5: P5) {
             p5.pixels[pix + 0] = bright;
             p5.pixels[pix + 1] = saturation;
             p5.pixels[pix + 2] = lum;
-            p5.pixels[pix + 3] = 255;
+            p5.pixels[pix + 3] = bright < 255 ? 255 : 0;
         }
     }
     p5.updatePixels();
