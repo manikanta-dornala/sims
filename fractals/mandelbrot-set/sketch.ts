@@ -16,7 +16,7 @@ function sketch(p5: P5) {
         );
     };
     p5.draw = () => {
-        if (p5.frameCount % 10 == 0) draw_set(p5);
+        if (p5.frameCount % 50 == 0) draw_set(p5);
     };
 }
 
@@ -25,6 +25,7 @@ new P5(sketch);
 function draw_set(p5: P5) {
     console.log(window.params.MaxIterations);
     p5.pixelDensity(1);
+    p5.colorMode(p5.HSL);
     p5.loadPixels();
 
     for (let x = 0; x < p5.height; x++) {
@@ -46,16 +47,15 @@ function draw_set(p5: P5) {
                 }
                 n++;
             }
-            let bright = p5.map(n, 0, window.params.MaxIterations, 100, 255);
-            if (n == window.params.MaxIterations) {
-                bright = 255;
-            }
+            let bright = p5.map(n, 0, window.params.MaxIterations, 0, 200);
+            let saturation = p5.map(n, 0, window.params.MaxIterations, 50, 150);
+            let lum = p5.map(n, 0, window.params.MaxIterations, 150, 255);
 
             let pix = (x + y * p5.height) * 4;
-            p5.pixels[pix + 0] = 0;
-            p5.pixels[pix + 1] = 0;
-            p5.pixels[pix + 2] = 0;
-            p5.pixels[pix + 3] = bright;
+            p5.pixels[pix + 0] = bright;
+            p5.pixels[pix + 1] = saturation;
+            p5.pixels[pix + 2] = lum;
+            p5.pixels[pix + 3] = 255;
         }
     }
     p5.updatePixels();
