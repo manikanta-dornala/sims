@@ -6,11 +6,17 @@ function sketch(p5: P5) {
     let centerY = 0;
     let gridLength = 1.3;
     p5.setup = () => {
-        p5.createCanvas(Math.ceil(p5.windowWidth)+10, Math.ceil(p5.windowHeight)+10);
+        p5.createCanvas(
+            Math.ceil(p5.windowWidth) + 10,
+            Math.ceil(p5.windowHeight) + 10
+        );
         draw_set(p5, centerX, centerY);
     };
     p5.windowResized = () => {
-        p5.resizeCanvas(Math.ceil(p5.windowWidth)+10, Math.ceil(p5.windowHeight)+10);
+        p5.resizeCanvas(
+            Math.ceil(p5.windowWidth) + 10,
+            Math.ceil(p5.windowHeight) + 10
+        );
     };
     const drag = () => {
         if (p5.mouseIsPressed) {
@@ -71,7 +77,7 @@ function draw_set(p5: P5, centerX = -0.7, centerY = 0, gridLength = 1.3) {
     p5.loadPixels();
     const width = Math.min(p5.width, p5.height);
     for (let x = 0; x < Math.floor(p5.windowWidth); x++) {
-        for (let y = 0; y <  Math.floor(p5.windowHeight); y++) {
+        for (let y = 0; y < Math.floor(p5.windowHeight); y++) {
             let a = p5.map(
                 x,
                 0,
