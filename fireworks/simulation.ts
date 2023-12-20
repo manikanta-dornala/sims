@@ -20,7 +20,8 @@ export default class Simulation {
         this.particles.forEach((particle: Particle) => {
             if (particle.isVisible) {
                 if (!params.isPaused && !skip) {
-                    let force = P5.Vector.mult(this.g, particle.mass);
+                    var force = this.p5.createVector(this.g.x, this.g.y);
+                    force = force.mult(particle.mass);
                     particle.step(force);
                     if (particle.velocity.mag() < 0.1) {
                         this.explosionParticles.push(...particle.explode());
@@ -36,7 +37,8 @@ export default class Simulation {
         this.explosionParticles.forEach((particle: Particle) => {
             if (particle.isVisible) {
                 if (!params.isPaused && !skip) {
-                    let force = P5.Vector.mult(this.g, particle.mass);
+                    let force = this.p5.createVector(this.g.x, this.g.y);
+                    force = force.mult(particle.mass);
                     particle.step(force);
                     if (particle.position.y > this.groundHeight) {
                         particle.isVisible = false;

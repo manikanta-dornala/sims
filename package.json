@@ -4,6 +4,7 @@
     "description": "",
     "scripts": {
         "start": "parcel index.html",
+        "build": "tsc --build",
         "deploy": "parcel build index.html --public-url /sims/",
         "clean": "rm -rf ./dist",
         "format": "prettier --write ./"
@@ -12,10 +13,11 @@
         "p5": "^1.4.2"
     },
     "devDependencies": {
+        "@parcel/transformer-glsl": "^2.10.3",
         "@types/node": "^17.0.11",
         "@types/p5": "^1.4.2",
         "parcel": "^2.10.3",
         "prettier": "^2.5.1",
-        "typescript": "^3.8.3"
+        "typescript": "^3.9.10"
     }
 }

@@ -56,7 +56,8 @@ export default class Particle {
     }
 
     step(force: P5.Vector) {
-        var acceleration = P5.Vector.mult(force, 1 / this.mass);
+        var acceleration = this.p5.createVector(force.x, force.y);
+        acceleration = acceleration.mult(1 / this.mass);
         this.velocity.add(acceleration);
         this.position.add(this.velocity);
         this.warpWorld();

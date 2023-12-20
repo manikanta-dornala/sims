@@ -42,7 +42,8 @@ export default class Boid {
     }
 
     step(force: P5.Vector) {
-        var acceleration = P5.Vector.mult(force, this.mass);
+        var acceleration = this.p5.createVector(force.x, force.y);
+        acceleration = acceleration.mult(this.mass);
         this.velocity.add(acceleration);
         if (this.velocity.mag() < window.params.MinSpeed) {
             this.velocity.normalize();
