@@ -4,8 +4,7 @@
     "description": "",
     "scripts": {
         "start": "parcel index.html",
-        "build": "tsc --build",
-        "deploy": "parcel build index.html --public-url /sims/",
+        "deploy": "parcel build index.html --public-url /sims/; python3 copy-glsl-files.py",
         "clean": "rm -rf ./dist",
         "format": "prettier --write ./"
     },
