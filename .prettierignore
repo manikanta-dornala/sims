@@ -3,3 +3,5 @@ build/
 dist/
 .parcel-cache
 .github
+*.frag
+*.vert

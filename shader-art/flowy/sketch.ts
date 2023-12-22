@@ -4,7 +4,6 @@ const sketch = (p5: P5) => {
     let myShader;
 
     p5.preload = () => {
-        // load each shader file (don't worry, we will come back to these!)
         myShader = p5.loadShader('shader.vert', 'shader.frag');
     };
 
@@ -18,7 +17,6 @@ const sketch = (p5: P5) => {
         });
         cnv.style('display', 'block');
         cnv.parent('sketch-holder');
-        p5.shader(myShader);
     };
 
     p5.windowResized = () => {
@@ -26,8 +24,11 @@ const sketch = (p5: P5) => {
     };
 
     p5.draw = () => {
-        // p5.background(0, 0, 0);
-        // p5.shader(myShader);
+        p5.background(0, 0, 0);
+        myShader.setUniform('u_aspect', p5.width / p5.height);
+        myShader.setUniform('u_framecount', p5.millis() * 0.001);
+        p5.shader(myShader);
+        p5.rect(0, 0, p5.width, p5.height);
     };
 };
 
