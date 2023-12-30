@@ -1,1 +1,0 @@
-{"mappings":"ACAA","sources":["fractals/mandelbrot-set/index.1f5dacaf.css","fractals/mandelbrot-set/style.css"],"sourcesContent":["html, body {\n  background-color: #000;\n  overflow: hidden;\n}\n\n/*# sourceMappingURL=index.1f5dacaf.css.map */\n","html,\nbody {\n    overflow: hidden;\n    background-color: black;\n}\n"],"names":[],"version":3,"file":"index.1f5dacaf.css.map"}
