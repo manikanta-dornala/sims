@@ -1,7 +1,7 @@
 import P5 from 'p5';
 export default class Simulation {
     p5: P5;
-    shrink = 0.76;
+    shrink = 0.75;
     angle = 30;
     minLength = 12;
     branches = 2;
@@ -35,6 +35,7 @@ export default class Simulation {
         ) {
             len = this.minLength;
         } else {
+            len = len * this.p5.map(this.p5.random(), 0, 1, 0.8, 1.08);
             this.p5.strokeWeight(
                 this.p5.map(len, 10, this.p5.width * 0.3, 1, 10)
             );
@@ -74,7 +75,8 @@ export default class Simulation {
         const b = 0;
         const alpha = 100;
         this.p5.fill(r, g, b, alpha);
-        this.p5.ellipse(0, 0, 10);
+        var size = 10 * this.p5.map(this.p5.random(), 0, 1, 0.5, 2);
+        this.p5.ellipse(0, 0, size);
         this.p5.endShape();
     }
 }
