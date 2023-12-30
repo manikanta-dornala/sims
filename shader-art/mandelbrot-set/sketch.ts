@@ -5,7 +5,7 @@ const sketch = (p5: P5) => {
 
     let centerX = -0.7;
     let centerY = 0;
-    let gridLength = 1.3;
+    let gridLength = 3;
     p5.preload = () => {
         myShader = p5.loadShader('shader.vert', 'shader.frag');
     };
@@ -71,7 +71,7 @@ const sketch = (p5: P5) => {
         }
 
         // Make sure we're not getting crazy values
-        gridLength = p5.constrain(gridLength, 0, 3);
+        gridLength = p5.constrain(gridLength, 0, 4);
     };
 };
 
