@@ -27,6 +27,12 @@ const sketch = (p5: P5) => {
     p5.draw = () => {
         simulation.run();
     };
+
+    p5.keyIsPressed = (keyPressed) => {
+        if (keyPressed == ' ') {
+            
+        }
+    }
 };
 
 new P5(sketch);
