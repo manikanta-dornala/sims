@@ -101,8 +101,7 @@ export default class Simulation {
             this.p5.fill(200, 100, 150, 255);
             this.p5.ellipse(0, 0, size, size);
         }
-        
-        
+
         this.p5.endShape();
     }
 }

@@ -22,11 +22,11 @@ const sketch = (p5: P5) => {
     };
 
     p5.windowResized = () => {
-        p5.resizeCanvas(p5.windowWidth * 0.9, p5.windowHeight * 0.9);
+        p5.resizeCanvas(p5.windowWidth, p5.windowHeight);
     };
 
     p5.draw = () => {
-        p5.background(20, 20, 0);
+        p5.background(0, 0, 0);
         simulation.run();
     };
 };

@@ -14,8 +14,8 @@ const sketch = (p5: P5) => {
         cnv.mouseOut(() => {
             is_canvas_infocus = false;
         });
-        cnv.style('display', 'block');
-        cnv.parent('sketch-holder');
+        // cnv.style('display', 'block');
+        // cnv.parent('sketch-holder');
         for (let i = 0; i < params.InitialPopulation; i++) {
             simulation.addNewParticle();
         }

@@ -4,7 +4,7 @@ const sketch = (p5: P5) => {
     var is_canvas_infocus = false;
     const game = new GameOfLife();
     p5.setup = () => {
-        var cnv = p5.createCanvas(p5.windowWidth * 0.9, p5.windowHeight * 0.9);
+        var cnv = p5.createCanvas(p5.windowWidth, p5.windowHeight);
         cnv.mouseOver(() => {
             is_canvas_infocus = true;
         });
@@ -16,7 +16,7 @@ const sketch = (p5: P5) => {
     };
 
     p5.windowResized = () => {
-        p5.resizeCanvas(p5.windowWidth * 0.9, p5.windowHeight * 0.9);
+        p5.resizeCanvas(p5.windowWidth, p5.windowHeight);
     };
 
     p5.draw = () => {
