@@ -1,0 +1,1 @@
+{"mappings":"ACAA","sources":["game-of-life/index.f8242aa4.css","game-of-life/style.css"],"sourcesContent":["html, body {\n  background-color: #000;\n}\n\n/*# sourceMappingURL=index.f8242aa4.css.map */\n","html,\nbody {\n    background-color: black;\n}\n\nbody {\n}\n"],"names":[],"version":3,"file":"index.f8242aa4.css.map"}
