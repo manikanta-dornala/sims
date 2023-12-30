@@ -51,8 +51,7 @@ export default class Simulation {
                     Math.ceil(branches / 2)
                 );
             angle =
-                angle +
-                this.angle * this.p5.map(this.p5.random(), 0, 1, -1, 1);
+                angle + this.angle * this.p5.map(this.p5.random(), 0, 1, -1, 1);
             this.p5.push();
             this.p5.rotate(angle);
             this.branch(len);
@@ -73,8 +72,16 @@ export default class Simulation {
 
     drawBranch(len) {
         len = len * this.p5.map(this.p5.random(), 0, 1, 0.9, 1.08);
-        this.p5.strokeWeight(this.p5.map(len, this.minLength, this.startLength, 1, 9));
-        const alpha = this.p5.map(len, this.minLength, this.startLength, 150, 255);
+        this.p5.strokeWeight(
+            this.p5.map(len, this.minLength, this.startLength, 1, 9)
+        );
+        const alpha = this.p5.map(
+            len,
+            this.minLength,
+            this.startLength,
+            150,
+            255
+        );
         this.p5.stroke(150, 150, 100, alpha);
         this.p5.line(0, 0, 0, -len);
         this.p5.translate(0, -len);
@@ -86,10 +93,10 @@ export default class Simulation {
         const r = 0;
         const g = this.p5.map(this.p5.random(), 0, 1, 200, 255);
         const b = 0;
-        const alpha = 150 * this.p5.map(this.p5.random(), 0, 1, 0.9, 1.8);
+        const alpha = 255 * this.p5.map(this.p5.random(), 0, 1, 0.9, 1.8);
         this.p5.fill(r, g, b, alpha);
         size = size * this.p5.map(this.p5.random(), 0, 1, 0.5, 2);
-        this.p5.ellipse(0, 0, size);
+        this.p5.ellipse(0, 0, size * 0.7, size);
         this.p5.endShape();
     }
 }
