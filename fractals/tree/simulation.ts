@@ -17,7 +17,7 @@ export default class Simulation {
         this.p5.randomSeed(this.randomSeed);
         if (this.p5.frameCount % 10 == 0) {
             this.p5.background(255);
-            this.p5.translate(this.p5.width * 0.5, this.p5.height * 0.9);
+            this.p5.translate(this.p5.width * 0.5, this.p5.height * 0.7);
             this.startLength = Math.min(this.p5.height, this.p5.width) * 0.2;
             this.branch(this.startLength);
         }
