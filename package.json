@@ -5,7 +5,7 @@
     "scripts": {
         "start": "parcel index.html",
         "deploy": "parcel build index.html --public-url /sims/; python3 copy-glsl-files.py",
-        "clean": "rm -rf ./dist",
+        "clean": "rm -rf ./dist; rm -rf ./.parcel-cache;",
         "format": "prettier --write ./"
     },
     "dependencies": {
