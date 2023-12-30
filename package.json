@@ -3,8 +3,8 @@
     "version": "1.0.0",
     "description": "",
     "scripts": {
-        "start": "parcel index.html",
-        "deploy": "parcel build index.html --public-url /sims/; python3 copy-glsl-files.py",
+        "start": "npm run clean; parcel index.html",
+        "deploy": "npm run clean; parcel build index.html --public-url /sims/; python3 copy-glsl-files.py",
         "clean": "rm -rf ./dist; rm -rf ./.parcel-cache;",
         "format": "prettier --write ./"
     },
