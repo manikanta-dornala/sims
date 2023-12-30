@@ -64,7 +64,7 @@ export default class Simulation {
                     this.angle * this.p5.map(this.p5.random(), 0, 1, 1, 10)
                 );
                 this.drawBranch(this.minLength * 0.8);
-                this.drawLeaf(5);
+                this.drawLeaf();
                 this.p5.pop();
             }
         }
@@ -73,7 +73,7 @@ export default class Simulation {
     drawBranch(len) {
         len = len * this.p5.map(this.p5.random(), 0, 1, 0.9, 1.08);
         this.p5.strokeWeight(
-            this.p5.map(len, this.minLength, this.startLength, 1, 9)
+            this.p5.map(len, this.minLength, this.startLength, 1, 12)
         );
         const alpha = this.p5.map(
             len,
@@ -89,14 +89,20 @@ export default class Simulation {
 
     drawLeaf(size = 10) {
         this.p5.beginShape();
+        size = size * this.p5.map(this.p5.random(), 0, 1, 0.5, 2);
         this.p5.noStroke();
         const r = 0;
         const g = this.p5.map(this.p5.random(), 0, 1, 200, 255);
         const b = 0;
         const alpha = 255 * this.p5.map(this.p5.random(), 0, 1, 0.9, 1.8);
         this.p5.fill(r, g, b, alpha);
-        size = size * this.p5.map(this.p5.random(), 0, 1, 0.5, 2);
         this.p5.ellipse(0, 0, size * 0.7, size);
+        if (this.p5.random() < 0.005) {
+            this.p5.fill(200, 100, 150, 255);
+            this.p5.ellipse(0, 0, size, size);
+        }
+        
+        
         this.p5.endShape();
     }
 }
