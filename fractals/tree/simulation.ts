@@ -6,7 +6,7 @@ export default class Simulation {
     minLength = 12;
     branches = 2;
     randomSeed = 42;
-    startLengthheightRatio = 0.18;
+    startLength;
     constructor(p5: P5) {
         this.p5 = p5;
         this.p5.angleMode(this.p5.DEGREES);
@@ -18,20 +18,15 @@ export default class Simulation {
         if (this.p5.frameCount % 10 == 0) {
             this.p5.background(255);
             this.p5.translate(this.p5.width * 0.5, this.p5.height * 0.9);
-            this.branch(this.p5.height * this.startLengthheightRatio);
+            this.startLength = Math.min(this.p5.height, this.p5.width) * 0.2;
+            this.branch(this.startLength);
         }
     }
 
     branch(len) {
         if (
             this.p5.random() <
-            this.p5.map(
-                len,
-                this.minLength,
-                this.p5.height * this.startLengthheightRatio,
-                0.05,
-                0.1
-            )
+            this.p5.map(len, this.minLength, this.startLength, 0.05, 0.1)
         ) {
             len = this.minLength;
         } else {
