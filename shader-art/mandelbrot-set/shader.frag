@@ -33,14 +33,14 @@ float getNumIterations(vec2 coord, float max_iters) {
 vec3 palette(float iterations, float max_iters) {
     if (iterations >= max_iters)
         return vec3(.1);
-    float brightness = iterations / max_iters;
+    float brightness = iterations * pow(u_grid_length, -0.05) / max_iters;
     return vec3(brightness);
 }
 
 void main() {
     float x = ((maxx - minx) * pos.x) + minx;
     float y = ((maxy - miny) * pos.y) + miny;
-    float max_iters = 100. * sqrt(sqrt(1. / u_grid_length));
+    float max_iters = 100. * pow(u_grid_length, -1. / 5.);
     float iterations = getNumIterations(vec2(x, y), max_iters);
     vec3 pixel_color = palette(iterations, max_iters);
     gl_FragColor = vec4(pixel_color, 1.);
