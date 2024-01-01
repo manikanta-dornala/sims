@@ -41,7 +41,7 @@ const sketch = (p5: P5) => {
 
         for (let i = 0; i < numPointsInSeg; i++) {
             const a = p5.random(segmentAngle);
-            const r = p5.random(radius);
+            const r = p5.random(radius, radius * 1.5);
             segmentPoints.push(p5.createVector(r * p5.cos(a), r * p5.sin(a)));
         }
 
