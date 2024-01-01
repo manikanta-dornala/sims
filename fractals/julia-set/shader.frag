@@ -11,13 +11,15 @@ uniform float minx;
 uniform float maxx;
 uniform float miny;
 uniform float maxy;
+uniform float currentX;
+uniform float currentY;
 
 float getNumIterations(vec2 coord, float max_iters) {
-    vec2 z = vec2(0);
-    vec2 c = vec2(coord);
+    vec2 z = vec2(coord);
+    vec2 c = vec2(currentX, currentY);
     float iterations = 1.;
     for (float i = 0.; i < 10000000.; i++) {
-        vec2 z_squared = vec2(z.x * z.x - z.y * z.y, z.x * z.y * 2.);
+        vec2 z_squared = vec2(z.x * z.x - z.y * z.y, 2. * z.x * z.y);
         z = z_squared + c;
         if (length(z) > 2.) {
             break;
