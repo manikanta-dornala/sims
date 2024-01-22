@@ -2,6 +2,7 @@ import P5 from 'p5';
 import MinSelectionSort from './algorithms/min-selection-sort';
 import MaxSelectionSort from './algorithms/max-selection-sort';
 import { SortingAlgorithm } from './algorithms/algorithm';
+import BubbleSort from './algorithms/bubble-sort';
 
 export default class Simulation {
     p5: P5;
@@ -31,6 +32,9 @@ export default class Simulation {
                 break;
             case 'max-selection-sort':
                 this.sorter = new MaxSelectionSort();
+                break;
+            case 'bubble-sort':
+                this.sorter = new BubbleSort();
                 break;
             default:
                 this.sorter = new MinSelectionSort();

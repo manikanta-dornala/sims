@@ -13,6 +13,7 @@ function randomize() {
 const algorithmOptions = [
     { value: 'min-selection-sort', label: 'Min Selection Sort' },
     { value: 'max-selection-sort', label: 'Max Selection Sort' },
+    { value: 'bubble-sort', label: 'Bubble Sort' },
 ];
 import * as ReactDOM from 'react-dom';
 
