@@ -6,7 +6,7 @@ import BubbleSort from './algorithms/bubble-sort';
 
 export default class Simulation {
     p5: P5;
-    N = 500;
+    N = 100;
     isSorting = false;
     sorter: SortingAlgorithm;
     constructor() {}
@@ -46,8 +46,17 @@ export default class Simulation {
     randomize() {
         const numbers = [];
         for (var i = 0; i < this.N; i++) {
-            numbers.push(Math.random());
+            numbers.push(i);
         }
+        function shuffleArray(array) {
+            for (var i = array.length - 1; i > 0; i--) {
+                var j = Math.floor(Math.random() * (i + 1));
+                var temp = array[i];
+                array[i] = array[j];
+                array[j] = temp;
+            }
+        }
+        shuffleArray(numbers);
         this.isSorting = false;
         this.sorter.reset(numbers);
     }
