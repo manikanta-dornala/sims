@@ -1,3 +1,4 @@
+import * as NumericInput from 'react-numeric-input';
 import * as React from 'react';
 import Select from 'react-select';
 import Simulation from './simulation';
@@ -25,6 +26,24 @@ ReactDOM.render(
     />,
     document.getElementById('algorithm-options')
 );
+
+ReactDOM.render(
+    <NumericInput
+        type="number"
+        className="form-control"
+        min={50}
+        max={1000}
+        step={10}
+        defaultValue={500}
+        onChange={(x) => {
+            simulation.N = x;
+            simulation.randomize();
+        }}
+        label="Array Size"
+    />,
+    document.getElementById('array-size')
+);
+
 ReactDOM.render(
     <button
         className="btn btn-success"
