@@ -9,7 +9,7 @@ export default class Simulation {
     N = 500;
     isSorting = false;
     sorter: SortingAlgorithm;
-    constructor() { }
+    constructor() {}
 
     init(p5: P5) {
         this.p5 = p5;
