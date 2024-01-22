@@ -71,7 +71,19 @@ function sketch(p5: P5) {
 
     p5.draw = () => {
         p5.background(255, 255, 255);
-        simulation.draw();
+        p5.push();
+        p5.translate(0, p5.height);
+        const cellWidth = p5.width / simulation.N;
+        for (let i = 0; i < simulation.N; i++) {
+            let height = simulation.sorter.numbers[i] * p5.height * -1;
+            p5.fill(0, 0, 0);
+            p5.stroke(255, 255, 255);
+            p5.rect(0, 0, cellWidth, height);
+            p5.translate(cellWidth, 0);
+        }
+        p5.pop();
+
+        if (p5.frameCount % 20) simulation.run();
     };
 }
 
