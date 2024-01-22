@@ -13,7 +13,6 @@ export default class Simulation {
     init(p5: P5) {
         this.p5 = p5;
         this.setAlgorithm('');
-        this.randomize();
     }
 
     run() {
@@ -37,6 +36,7 @@ export default class Simulation {
                 this.sorter = new MinSelectionSort();
                 break;
         }
+        this.randomize();
     }
 
     randomize() {
