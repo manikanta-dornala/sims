@@ -9,7 +9,7 @@ export default class Simulation {
     N = 500;
     isSorting = false;
     sorter: SortingAlgorithm;
-    constructor() {}
+    constructor() { }
 
     init(p5: P5) {
         this.p5 = p5;
@@ -48,6 +48,7 @@ export default class Simulation {
         for (var i = 0; i < this.N; i++) {
             numbers.push(Math.random());
         }
+        this.isSorting = false;
         this.sorter.reset(numbers);
     }
 
