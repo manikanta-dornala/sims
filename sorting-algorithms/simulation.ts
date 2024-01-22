@@ -3,10 +3,10 @@ import P5 from 'p5';
 export default class Simulation {
     p5: P5;
     numbers = [];
-    N = 50;
+    N = 500;
     isSorting = false;
     sorter;
-    constructor() {}
+    constructor() { }
 
     init(p5: P5) {
         this.p5 = p5;
@@ -124,7 +124,6 @@ class MaxSelectionSort {
     }
 
     next() {
-        console.log(this.numbers);
         let front = this.numbers.slice(0, this.N - this.iter);
         let back = this.numbers.slice(this.N - this.iter);
         if (front.length > 0) {

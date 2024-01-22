@@ -42,9 +42,7 @@ ReactDOM.render(
         className="btn btn-primary"
         disabled={simulation.isActive() == true}
         onClick={(x) => {
-            console.log(simulation.isSorting);
             simulation.beginSort();
-            console.log(simulation.isSorting);
         }}
     >
         Sort
