@@ -15,9 +15,12 @@ export default class Simulation {
 
     run() {
         if (this.isSorting) {
-            this.sorter.next();
-            if (this.sorter.terminate) {
-                this.isSorting = false;
+            for (var i = 0; i < 3; i++) {
+                this.sorter.next();
+                if (this.sorter.terminate) {
+                    this.isSorting = false;
+                    break;
+                }
             }
         }
     }

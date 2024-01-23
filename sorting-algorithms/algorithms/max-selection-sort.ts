@@ -10,7 +10,11 @@ export default class MaxSelectionSort extends SortingAlgorithm {
                 selectA: res.index,
             });
             swap(numbers, this.N - i - 1, res.index);
-            this.steps.push({ typ: 'swap', swapA: i, swapB: res.index });
+            this.steps.push({
+                typ: 'swap',
+                swapA: this.N - i - 1,
+                swapB: res.index,
+            });
         }
     }
 }

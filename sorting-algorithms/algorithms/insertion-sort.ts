@@ -8,17 +8,17 @@ export default class InsertionSort extends SortingAlgorithm {
     createSortSteps(numbers: number[]): void {
         let key = 0,
             j = 0;
-        for (let i = 1; i <= this.N; i++) {
+        for (let i = 1; i < this.N; i++) {
             key = numbers[i];
             j = i - 1;
             while (j >= 0 && numbers[j] > key) {
                 numbers[j + 1] = numbers[j];
-                j = j - 1;
                 this.steps.push({
                     typ: 'set',
                     setIndex: j + 1,
                     setValue: numbers[j],
                 });
+                j = j - 1;
             }
             numbers[j + 1] = key;
             this.steps.push({ typ: 'set', setIndex: j + 1, setValue: key });
