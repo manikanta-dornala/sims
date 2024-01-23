@@ -6,19 +6,20 @@ import Simulation from './simulation';
 import P5 from 'p5';
 import { Component } from 'react';
 
-const simulation = new Simulation();
-
-function randomize() {
-    simulation.randomize();
-}
-
 const algorithmOptions = [
+    { value: 'merge-sort', label: 'Merge Sort' },
+    { value: 'quick-sort', label: 'Quick Sort' },
     { value: 'min-selection-sort', label: 'Min Selection Sort' },
     { value: 'max-selection-sort', label: 'Max Selection Sort' },
     { value: 'bubble-sort', label: 'Bubble Sort' },
     { value: 'insertion-sort', label: 'Insertion Sort' },
-    { value: 'merge-sort', label: 'Merge Sort' },
 ];
+
+const simulation = new Simulation();
+simulation.setAlgorithm(algorithmOptions[0].value);
+function randomize() {
+    simulation.randomize();
+}
 
 createRoot(document.getElementById('algorithm-options')).render(
     <Select

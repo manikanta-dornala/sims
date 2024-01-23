@@ -5,6 +5,7 @@ import { SortingAlgorithm } from './algorithms/algorithm';
 import BubbleSort from './algorithms/bubble-sort';
 import InsertionSort from './algorithms/insertion-sort';
 import MergeSort from './algorithms/merge-sort';
+import QuickSort from './algorithms/quick-sort';
 
 export default class Simulation {
     N = 50;
@@ -42,6 +43,9 @@ export default class Simulation {
                 break;
             case 'merge-sort':
                 this.sorter = new MergeSort();
+                break;
+            case 'quick-sort':
+                this.sorter = new QuickSort();
                 break;
             default:
                 this.sorter = new MinSelectionSort();
