@@ -4,6 +4,7 @@ import MaxSelectionSort from './algorithms/max-selection-sort';
 import { SortingAlgorithm } from './algorithms/algorithm';
 import BubbleSort from './algorithms/bubble-sort';
 import InsertionSort from './algorithms/insertion-sort';
+import MergeSort from './algorithms/merge-sort';
 
 export default class Simulation {
     N = 50;
@@ -15,7 +16,7 @@ export default class Simulation {
 
     run() {
         if (this.isSorting) {
-            for (var i = 0; i < 3; i++) {
+            for (var i = 0; i < 1; i++) {
                 this.sorter.next();
                 if (this.sorter.terminate) {
                     this.isSorting = false;
@@ -38,6 +39,9 @@ export default class Simulation {
                 break;
             case 'insertion-sort':
                 this.sorter = new InsertionSort();
+                break;
+            case 'merge-sort':
+                this.sorter = new MergeSort();
                 break;
             default:
                 this.sorter = new MinSelectionSort();

@@ -17,6 +17,7 @@ const algorithmOptions = [
     { value: 'max-selection-sort', label: 'Max Selection Sort' },
     { value: 'bubble-sort', label: 'Bubble Sort' },
     { value: 'insertion-sort', label: 'Insertion Sort' },
+    { value: 'merge-sort', label: 'Merge Sort' },
 ];
 
 createRoot(document.getElementById('algorithm-options')).render(
