@@ -1,5 +1,6 @@
 import * as NumericInput from 'react-numeric-input';
-import * as React from 'react';
+import { createRoot } from 'react-dom/client';
+
 import Select from 'react-select';
 import Simulation from './simulation';
 import P5 from 'p5';
@@ -16,20 +17,18 @@ const algorithmOptions = [
     { value: 'bubble-sort', label: 'Bubble Sort' },
     { value: 'insertion-sort', label: 'Insertion Sort' },
 ];
-import * as ReactDOM from 'react-dom';
 
-ReactDOM.render(
+createRoot(document.getElementById('algorithm-options')).render(
     <Select
         defaultValue={algorithmOptions[0]}
         options={algorithmOptions}
         onChange={(x) => {
             simulation.setAlgorithm(x.value);
         }}
-    />,
-    document.getElementById('algorithm-options')
+    />
 );
 
-ReactDOM.render(
+createRoot(document.getElementById('array-size')).render(
     <NumericInput
         type="number"
         className="form-control"
@@ -42,11 +41,10 @@ ReactDOM.render(
             simulation.randomize();
         }}
         label="Array Size"
-    />,
-    document.getElementById('array-size')
+    />
 );
 
-ReactDOM.render(
+createRoot(document.getElementById('randomize-button')).render(
     <button
         className="btn btn-success"
         disabled={simulation.isActive() == true}
@@ -55,10 +53,9 @@ ReactDOM.render(
         }}
     >
         Randomize
-    </button>,
-    document.getElementById('randomize-button')
+    </button>
 );
-ReactDOM.render(
+createRoot(document.getElementById('sort-button')).render(
     <button
         className="btn btn-primary"
         disabled={simulation.isActive() == true}
@@ -67,13 +64,14 @@ ReactDOM.render(
         }}
     >
         Sort
-    </button>,
-    document.getElementById('sort-button')
+    </button>
+);
+createRoot(document.getElementById('num-sort-steps')).render(
+    <p>{simulation.sorter.getNumSteps()}</p>
 );
 
 function sketch(p5: P5) {
     var is_canvas_infocus = false;
-    simulation.init(p5);
     p5.setup = () => {
         var cnv = p5.createCanvas(p5.windowWidth, p5.windowHeight * 0.8);
         cnv.mouseOver(() => {
@@ -106,8 +104,7 @@ function sketch(p5: P5) {
             p5.translate(cellWidth, 0);
         }
         p5.pop();
-
-        if (p5.frameCount % 20) simulation.run();
+        simulation.run();
     };
 }
 

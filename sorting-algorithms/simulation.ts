@@ -6,14 +6,10 @@ import BubbleSort from './algorithms/bubble-sort';
 import InsertionSort from './algorithms/insertion-sort';
 
 export default class Simulation {
-    p5: P5;
-    N = 100;
+    N = 50;
     isSorting = false;
     sorter: SortingAlgorithm;
-    constructor() {}
-
-    init(p5: P5) {
-        this.p5 = p5;
+    constructor() {
         this.setAlgorithm('');
     }
 
