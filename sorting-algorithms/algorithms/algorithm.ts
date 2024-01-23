@@ -22,8 +22,6 @@ export class SortingAlgorithm {
         this.terminate = false;
         this.steps = [];
         this.createSortSteps([...this.numbers]);
-        this.numSteps = this.getNumSteps();
-        console.log(this.steps);
     }
 
     createSortSteps(numbers: Array<number>) {}

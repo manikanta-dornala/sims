@@ -4,6 +4,7 @@ import { createRoot } from 'react-dom/client';
 import Select from 'react-select';
 import Simulation from './simulation';
 import P5 from 'p5';
+import { Component } from 'react';
 
 const simulation = new Simulation();
 
@@ -60,20 +61,18 @@ createRoot(document.getElementById('sort-button')).render(
         className="btn btn-primary"
         disabled={simulation.isActive() == true}
         onClick={(x) => {
+            simulation.sorter.numSteps = simulation.sorter.getNumSteps();
             simulation.beginSort();
         }}
     >
         Sort
     </button>
 );
-createRoot(document.getElementById('num-sort-steps')).render(
-    <p>{simulation.sorter.getNumSteps()}</p>
-);
 
 function sketch(p5: P5) {
     var is_canvas_infocus = false;
     p5.setup = () => {
-        var cnv = p5.createCanvas(p5.windowWidth, p5.windowHeight * 0.8);
+        var cnv = p5.createCanvas(p5.windowWidth * 0.95, p5.windowHeight * 0.8);
         cnv.mouseOver(() => {
             is_canvas_infocus = true;
         });
@@ -85,7 +84,7 @@ function sketch(p5: P5) {
     };
 
     p5.windowResized = () => {
-        p5.resizeCanvas(p5.windowWidth, p5.windowHeight * 0.8);
+        p5.resizeCanvas(p5.windowWidth * 0.95, p5.windowHeight * 0.8);
     };
 
     p5.draw = () => {
