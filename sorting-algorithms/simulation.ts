@@ -6,6 +6,7 @@ import BubbleSort from './algorithms/bubble-sort';
 import InsertionSort from './algorithms/insertion-sort';
 import MergeSort from './algorithms/merge-sort';
 import QuickSort from './algorithms/quick-sort';
+import HeapSort from './algorithms/heap-sort';
 
 export default class Simulation {
     N = 50;
@@ -46,6 +47,8 @@ export default class Simulation {
                 break;
             case 'quick-sort':
                 this.sorter = new QuickSort();
+            case 'heap-sort':
+                this.sorter = new HeapSort();
                 break;
             default:
                 this.sorter = new MinSelectionSort();

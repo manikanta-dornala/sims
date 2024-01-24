@@ -9,6 +9,7 @@ import { Component } from 'react';
 const algorithmOptions = [
     { value: 'merge-sort', label: 'Merge Sort' },
     { value: 'quick-sort', label: 'Quick Sort' },
+    { value: 'heap-sort', label: 'Heap Sort' },
     { value: 'min-selection-sort', label: 'Min Selection Sort' },
     { value: 'max-selection-sort', label: 'Max Selection Sort' },
     { value: 'bubble-sort', label: 'Bubble Sort' },
