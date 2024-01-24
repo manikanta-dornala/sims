@@ -105,6 +105,12 @@ function sketch(p5: P5) {
             p5.translate(cellWidth, 0);
         }
         p5.pop();
+        p5.textSize(24);
+        p5.text(
+            `Progress ${simulation.sorter.currStep}/ ${simulation.sorter.numSteps} steps`,
+            0,
+            50
+        );
         simulation.run();
     };
 }

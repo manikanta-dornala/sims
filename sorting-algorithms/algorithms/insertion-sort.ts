@@ -10,6 +10,7 @@ export default class InsertionSort extends SortingAlgorithm {
             j = 0;
         for (let i = 1; i < this.N; i++) {
             key = numbers[i];
+            this.steps.push({ typ: 'step' });
             j = i - 1;
             while (j >= 0 && numbers[j] > key) {
                 numbers[j + 1] = numbers[j];

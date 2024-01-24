@@ -19,8 +19,12 @@ export default class MergeSort extends SortingAlgorithm {
         let n1 = m - l + 1;
         let n2 = r - m;
 
-        let L = arr.slice(l, l + n1);
+        let L = arr.slice(l, m + 1);
         let R = arr.slice(m + 1, r + 1);
+        for (let tmp = l; tmp < r + 1; tmp++) {
+            this.steps.push({ typ: 'step' });
+        }
+
         i = 0;
         j = 0;
         k = l;

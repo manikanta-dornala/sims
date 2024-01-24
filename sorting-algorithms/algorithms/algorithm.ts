@@ -1,18 +1,22 @@
+interface SortStep {
+    typ: string;
+    swapA?: number;
+    swapB?: number;
+    swapSteps?: number;
+    selectA?: number;
+    selectSteps?: number;
+    setIndex?: number;
+    setValue?: number;
+}
+const SWAP_STEPS = 3;
 export class SortingAlgorithm {
     numbers: Array<number> = [];
     iter = 0;
     N = 0;
     terminate = false;
-    steps: Array<{
-        typ: string;
-        swapA?: number;
-        swapB?: number;
-        selectA?: number;
-        selectSteps?: number;
-        setIndex?: number;
-        setValue?: number;
-    }>;
+    steps: Array<SortStep>;
     numSteps: number = 0;
+    currStep: number = 0;
     constructor() {}
 
     reset(numbers: Array<number>) {
@@ -22,6 +26,8 @@ export class SortingAlgorithm {
         this.terminate = false;
         this.steps = [];
         this.createSortSteps([...this.numbers]);
+        this.numSteps = this.getNumSteps();
+        this.currStep = 0;
     }
 
     createSortSteps(numbers: Array<number>) {}
@@ -32,15 +38,16 @@ export class SortingAlgorithm {
             const step = this.steps[i];
             switch (step.typ) {
                 case 'swap':
-                    numSteps++;
+                    numSteps += SWAP_STEPS + 1;
                     break;
                 case 'find':
-                    numSteps += step.selectSteps;
+                    numSteps += step.selectSteps + 1;
                     break;
                 case 'set':
                     numSteps++;
                     break;
                 default:
+                    numSteps++;
                     break;
             }
         }
@@ -55,8 +62,15 @@ export class SortingAlgorithm {
         const step = this.steps[this.iter];
         switch (step.typ) {
             case 'swap':
-                swap(this.numbers, step.swapA, step.swapB);
-                this.iter++;
+                if (step.swapSteps === undefined) {
+                    step.swapSteps = SWAP_STEPS;
+                } else {
+                    step.swapSteps--;
+                }
+                if (step.swapSteps === 0) {
+                    swap(this.numbers, step.swapA, step.swapB);
+                    this.iter++;
+                }
                 break;
             case 'find':
                 if (step.selectSteps > 0) {
@@ -70,8 +84,10 @@ export class SortingAlgorithm {
                 this.iter++;
                 break;
             default:
+                this.iter++;
                 break;
         }
+        this.currStep++;
     }
 }
 
