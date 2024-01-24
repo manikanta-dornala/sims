@@ -20,7 +20,7 @@ const algorithmOptions = [
 const simulation = new Simulation();
 simulation.setAlgorithm(algorithmOptions[0].value);
 function randomize() {
-    simulation.randomize();
+    simulation.shuffle();
 }
 
 createRoot(document.getElementById('algorithm-options')).render(
@@ -43,7 +43,7 @@ createRoot(document.getElementById('array-size')).render(
         defaultValue={simulation.N}
         onChange={(x) => {
             simulation.N = x;
-            simulation.randomize();
+            simulation.shuffle();
         }}
         label="Array Size"
     />
@@ -54,10 +54,10 @@ createRoot(document.getElementById('randomize-button')).render(
         className="btn btn-success"
         disabled={simulation.isActive() == true}
         onClick={(x) => {
-            simulation.randomize();
+            simulation.shuffle();
         }}
     >
-        Randomize
+        Shuffle
     </button>
 );
 createRoot(document.getElementById('sort-button')).render(

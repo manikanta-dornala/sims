@@ -143,3 +143,10 @@ export function swap(array, i, j) {
     array[j] = tmp;
     return array;
 }
+
+export function shuffleArray(array) {
+    for (var i = array.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        swap(array, i, j);
+    }
+}
