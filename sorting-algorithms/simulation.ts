@@ -7,6 +7,7 @@ import InsertionSort from './algorithms/insertion-sort';
 import MergeSort from './algorithms/merge-sort';
 import QuickSort from './algorithms/quick-sort';
 import HeapSort from './algorithms/heap-sort';
+import ShellSort from './algorithms/shell-sort';
 
 export default class Simulation {
     N = 50;
@@ -50,6 +51,9 @@ export default class Simulation {
                 break;
             case 'heap-sort':
                 this.sorter = new HeapSort();
+                break;
+            case 'shell-sort':
+                this.sorter = new ShellSort();
                 break;
             default:
                 this.sorter = new MinSelectionSort();

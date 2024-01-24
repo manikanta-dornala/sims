@@ -14,6 +14,7 @@ const algorithmOptions = [
     { value: 'max-selection-sort', label: 'Max Selection Sort' },
     { value: 'bubble-sort', label: 'Bubble Sort' },
     { value: 'insertion-sort', label: 'Insertion Sort' },
+    { value: 'shell-sort', label: 'Shell Sort' },
 ];
 
 const simulation = new Simulation();
