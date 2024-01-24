@@ -109,7 +109,7 @@ function sketch(p5: P5) {
         p5.textSize(24);
         p5.text(
             `Progress ${simulation.sorter.currStep}/ ${simulation.sorter.numSteps} steps`,
-            0,
+            p5.width - 300,
             50
         );
         simulation.run();

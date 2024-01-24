@@ -47,6 +47,7 @@ export default class Simulation {
                 break;
             case 'quick-sort':
                 this.sorter = new QuickSort();
+                break;
             case 'heap-sort':
                 this.sorter = new HeapSort();
                 break;
