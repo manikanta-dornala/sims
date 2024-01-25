@@ -6,7 +6,10 @@ export default function sketch(simulation: Simulation) {
     return (p5: P5) => {
         var is_canvas_infocus = false;
         p5.setup = () => {
-            var cnv = p5.createCanvas(p5.windowWidth * 0.95, p5.windowHeight * 0.8);
+            var cnv = p5.createCanvas(
+                p5.windowWidth * 0.95,
+                p5.windowHeight * 0.8
+            );
             cnv.mouseOver(() => {
                 is_canvas_infocus = true;
             });
@@ -46,4 +49,4 @@ export default function sketch(simulation: Simulation) {
             simulation.run();
         };
     };
-};
+}

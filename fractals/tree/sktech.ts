@@ -12,21 +12,17 @@ export const sketch = (simulation: Simulation) => {
             cnv.mouseOut(() => {
                 is_canvas_infocus = false;
             });
+            simulation.setup(p5);
             p5.noLoop();
         };
 
         p5.windowResized = () => {
             p5.resizeCanvas(p5.windowWidth, p5.windowHeight);
+            simulation.run();
         };
 
         p5.draw = () => {
-            p5.background(0, 0, 0);
-            p5.fill(255, 255, 255);
-            p5.circle(
-                Math.random() * p5.windowWidth,
-                Math.random() * p5.windowHeight,
-                40
-            );
+            simulation.run();
         };
     };
 };
