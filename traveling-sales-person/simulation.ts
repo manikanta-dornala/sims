@@ -7,6 +7,7 @@ export default class Simulation {
     gridXSize = 100;
     gridYSize = 100;
     worldGrid: Array<Array<Vertex>> = [];
+    numVertices = 6;
     vertices = [];
     search?: Search;
     p5: P5;
@@ -96,7 +97,9 @@ export default class Simulation {
 
     randomize() {
         this.vertices = [];
-        this.createVertexs(6).forEach((node) => this.vertices.push(node));
+        this.createVertexs(this.numVertices).forEach((node) =>
+            this.vertices.push(node)
+        );
         this.isActive = false;
         this.search.reset(this.vertices);
     }

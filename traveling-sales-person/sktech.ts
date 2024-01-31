@@ -27,13 +27,13 @@ export const sketch = (simulation: Simulation) => {
             drawGrid();
             simulation.vertices.map(drawVertex);
             drawPath(simulation.search.current_path, [255, 255, 255, 100]);
-            drawPath(simulation.search.min_path, [0, 0, 255]);
+            drawPath(simulation.search.min_path, [0, 255, 150]);
             p5.fill(255, 255, 255);
             p5.textSize(20);
-            p5.text(simulation.getCurrPathStr(), 20, 20, p5.width, 40);
-            p5.fill(0, 0, 255);
+            p5.text(simulation.getCurrPathStr(), 20, 20);
+            p5.fill(0, 255, 150);
             p5.textSize(20);
-            p5.text(simulation.getMinPathStr(), 20, 60, p5.width, 80);
+            p5.text(simulation.getMinPathStr(), 20, 50);
             simulation.run();
         };
 
@@ -72,9 +72,7 @@ export const sketch = (simulation: Simulation) => {
             p5.text(
                 vertex.name,
                 ((vertex.position.x + 1) * p5.width) / simulation.gridXSize,
-                ((vertex.position.y + 1) * p5.height) / simulation.gridYSize,
-                600
-            );
+                ((vertex.position.y + 1) * p5.height) / simulation.gridYSize,);
             p5.endShape();
         }
 
@@ -88,9 +86,9 @@ export const sketch = (simulation: Simulation) => {
                 const vertex = simulation.vertices[path[i]];
                 p5.vertex(
                     ((vertex.position.x + 0.5) * p5.width) /
-                        simulation.gridXSize,
+                    simulation.gridXSize,
                     ((vertex.position.y + 0.5) * p5.height) /
-                        simulation.gridYSize
+                    simulation.gridYSize
                 );
             }
             p5.endShape();

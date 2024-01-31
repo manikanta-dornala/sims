@@ -25,9 +25,10 @@ export default class BranchAndBoundSearch extends Search {
                 }
             }
             this.current_path = [...newPath];
+            this.min_path = [...this.bestPath];
             this.frontier.push(newPath);
         });
-        this.min_path = [...this.bestPath];
+
         if (this.max_iter <= this.iter || this.frontier.length <= 0) {
             this.terminate = true;
         }

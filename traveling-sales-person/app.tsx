@@ -50,6 +50,21 @@ class AppComponent extends React.Component<{}, {}> {
                             }}
                         />
                     </div>
+                    <div className="col-md-1">
+                        <NumericInput
+                            type="number"
+                            className="form-control align-middle align-right"
+                            min={3}
+                            max={10}
+                            step={1}
+                            defaultValue={this.simulation.numVertices}
+                            onChange={(x) => {
+                                this.simulation.numVertices = x;
+                                this.simulation.randomize();
+                            }}
+                            label="Cities"
+                        />
+                    </div>
                     <div className="col-md-2">
                         <button
                             className="btn btn-primary"
