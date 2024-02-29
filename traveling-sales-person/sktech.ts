@@ -72,7 +72,8 @@ export const sketch = (simulation: Simulation) => {
             p5.text(
                 vertex.name,
                 ((vertex.position.x + 1) * p5.width) / simulation.gridXSize,
-                ((vertex.position.y + 1) * p5.height) / simulation.gridYSize,);
+                ((vertex.position.y + 1) * p5.height) / simulation.gridYSize
+            );
             p5.endShape();
         }
 
@@ -86,9 +87,9 @@ export const sketch = (simulation: Simulation) => {
                 const vertex = simulation.vertices[path[i]];
                 p5.vertex(
                     ((vertex.position.x + 0.5) * p5.width) /
-                    simulation.gridXSize,
+                        simulation.gridXSize,
                     ((vertex.position.y + 0.5) * p5.height) /
-                    simulation.gridYSize
+                        simulation.gridYSize
                 );
             }
             p5.endShape();

@@ -5,7 +5,10 @@ export const sketch = (simulation: Simulation) => {
     return (p5: P5) => {
         var is_canvas_infocus = false;
         p5.setup = () => {
-            var cnv = p5.createCanvas(p5.windowWidth, p5.windowHeight);
+            var cnv = p5.createCanvas(
+                0.9 * p5.windowWidth,
+                0.9 * p5.windowHeight
+            );
             cnv.mouseOver(() => {
                 is_canvas_infocus = true;
             });
@@ -18,7 +21,7 @@ export const sketch = (simulation: Simulation) => {
         };
 
         p5.windowResized = () => {
-            p5.resizeCanvas(p5.windowWidth, p5.windowHeight);
+            p5.resizeCanvas(0.9 * p5.windowWidth, 0.9 * p5.windowHeight);
         };
 
         p5.draw = () => {
