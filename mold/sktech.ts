@@ -3,7 +3,7 @@ let buffer = 60;
 export const sketch = () => {
     return (p5: P5) => {
         var is_canvas_infocus = false;
-        let num = 20000;
+        let num = 5000;
         let molds: Array<Mold> = [];
         p5.setup = () => {
             var cnv = p5.createCanvas(p5.windowWidth, p5.windowHeight - buffer);
