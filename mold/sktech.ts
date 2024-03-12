@@ -3,7 +3,7 @@ let buffer = 60;
 export const sketch = () => {
     return (p5: P5) => {
         var is_canvas_infocus = false;
-        let num = 5000;
+        let num = 10000;
         let molds: Array<Mold> = [];
         p5.setup = () => {
             var cnv = p5.createCanvas(p5.windowWidth, p5.windowHeight - buffer);
@@ -12,8 +12,8 @@ export const sketch = () => {
 
             for (let i = 0; i < num; i++) {
                 molds[i] = new Mold(
-                    p5.random(p5.width),
-                    p5.random(p5.height),
+                    p5.random(0.1 * p5.width, 0.9 * p5.width),
+                    p5.random(0.1 * p5.height, 0.9 * p5.height),
                     p5
                 );
             }
@@ -27,7 +27,7 @@ export const sketch = () => {
         };
 
         p5.draw = () => {
-            p5.background(0, 3);
+            p5.background(0, 5);
             p5.loadPixels();
 
             for (let i = 0; i < num; i++) {
@@ -41,14 +41,14 @@ export const sketch = () => {
 class Mold {
     x: number = Math.random();
     y: number = Math.random();
-    r: number = 0.8;
+    r: number = 1;
     heading: number = 360 * Math.random();
     rotAngle: number;
     vx: number = Math.random();
     vy: number = Math.random();
 
-    sensorAngle = 45;
-    sensorDist = 50;
+    sensorAngle = 90;
+    sensorDist = 10;
 
     p5: P5;
     constructor(x, y, p5) {
@@ -72,8 +72,9 @@ class Mold {
     }
 
     updatePos() {
-        this.vx = this.p5.cos(this.heading);
-        this.vy = this.p5.sin(this.heading);
+        let heading = this.heading * (1 + this.p5.random(-0.1, 0.1));
+        this.vx = this.p5.cos(heading);
+        this.vy = this.p5.sin(heading);
 
         // Using % Modulo expression to wrap around the canvas
         this.x = (this.x + this.vx + this.p5.width) % this.p5.width;
@@ -85,7 +86,7 @@ class Mold {
         let l = this.getValue(-this.sensorAngle);
         let f = this.getValue(0);
 
-        let rotAngle = this.p5.random(this.rotAngle - 10, this.rotAngle + 10);
+        let rotAngle = this.p5.random(this.rotAngle - 5, this.rotAngle + 5);
         if (f > l && f > r) {
             this.heading += 0;
         } else if (f < l && f < r) {
