@@ -3,12 +3,14 @@ let buffer = 60;
 export const sketch = () => {
     return (p5: P5) => {
         var is_canvas_infocus = false;
-        let num = 10000;
+        let num = 5000;
         let molds: Array<Mold> = [];
         p5.setup = () => {
             var cnv = p5.createCanvas(p5.windowWidth, p5.windowHeight - buffer);
 
             p5.angleMode(p5.DEGREES);
+
+            // p5.randomSeed(42);
 
             for (let i = 0; i < num; i++) {
                 molds[i] = new Mold(
@@ -29,26 +31,27 @@ export const sketch = () => {
         p5.draw = () => {
             p5.background(0, 5);
             p5.loadPixels();
-
-            for (let i = 0; i < num; i++) {
-                molds[i].update();
-                molds[i].display();
+            for (let c = 0; c < 5; c++) {
+                for (let i = 0; i < num; i++) {
+                    molds[i].update();
+                    molds[i].display();
+                }
             }
         };
     };
 };
 
 class Mold {
-    x: number = Math.random();
-    y: number = Math.random();
+    x: number;
+    y: number;
     r: number = 1;
-    heading: number = 360 * Math.random();
+    heading: number;
     rotAngle: number;
-    vx: number = Math.random();
-    vy: number = Math.random();
+    vx: number;
+    vy: number;
 
-    sensorAngle = 90;
-    sensorDist = 10;
+    sensorAngle = 60;
+    sensorDist = 20;
 
     p5: P5;
     constructor(x, y, p5) {
@@ -57,7 +60,8 @@ class Mold {
         this.p5 = p5;
         this.vx = this.p5.cos(this.heading);
         this.vy = this.p5.sin(this.heading);
-        this.rotAngle = 45;
+        this.heading = this.p5.random() * 360;
+        this.rotAngle = 30;
     }
 
     display() {
@@ -72,7 +76,8 @@ class Mold {
     }
 
     updatePos() {
-        let heading = this.heading * (1 + this.p5.random(-0.1, 0.1));
+        let randomheading = this.p5.random(-0.1, 0.1);
+        let heading = this.heading * (1 + randomheading);
         this.vx = this.p5.cos(heading);
         this.vy = this.p5.sin(heading);
 
@@ -86,7 +91,11 @@ class Mold {
         let l = this.getValue(-this.sensorAngle);
         let f = this.getValue(0);
 
-        let rotAngle = this.p5.random(this.rotAngle - 5, this.rotAngle + 5);
+        let rotAngleRandom = 5;
+        let rotAngle = this.p5.random(
+            this.rotAngle - rotAngleRandom,
+            this.rotAngle + rotAngleRandom
+        );
         if (f > l && f > r) {
             this.heading += 0;
         } else if (f < l && f < r) {
