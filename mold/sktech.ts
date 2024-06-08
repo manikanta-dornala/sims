@@ -34,6 +34,8 @@ export const sketch = () => {
             for (let c = 0; c < 5; c++) {
                 for (let i = 0; i < num; i++) {
                     molds[i].update();
+                }
+                for (let i = 0; i < num; i++) {
                     molds[i].display();
                 }
             }
